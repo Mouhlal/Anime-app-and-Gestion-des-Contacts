@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Delete_Contact } from "./Actions";
 import { AllContacts } from "./Reducer";
-import SearchContact from "./SearchContact";
 
 export default function MyContact() {
   const data = useSelector(AllContacts);

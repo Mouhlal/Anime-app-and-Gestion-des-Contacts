@@ -4,16 +4,16 @@ import Swal from "sweetalert2";
 
 export default function SearchContact() {
   const [search, setSearch] = useState("");
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const contact = useSelector((state) => state.contacts);
 
   function Chercher(event) {
     event.preventDefault();
-    if (search == "" ) {
+    if (search === "") {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Not found !",
+        text: "Please enter a search term!",
       });
     } else {
       const filtreData = contact.filter(
@@ -26,9 +26,8 @@ export default function SearchContact() {
           text: "No matching contacts found!",
         });
       } else {
-        setData(filtreData[0]);
+        setData(filtreData);
       }
-      
     }
   }
   return (
@@ -37,37 +36,41 @@ export default function SearchContact() {
         <br />
         <h4 className="text-center"> Search Contacts </h4>
         <br />
-        <div class="input-group mb-3 container">
-          <span class="input-group-text">
+        <div className="input-group mb-3 container">
+          <span className="input-group-text">
             {" "}
-            <i class="bi bi-search"></i>{" "}
+            <i className="bi bi-search"></i>{" "}
           </span>
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="floatingInputGroup1"
               placeholder="Username"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <label for="floatingInputGroup1">Username</label>
+            <label htmlFor="floatingInputGroup1">Username</label>
           </div>
           <button onClick={Chercher} className="btn btn-primary">
             Search
           </button>
         </div>
       </form>
-      <br />{" "}
-      {data && (
-        <div className="text-center">
-          ID : {data.id} <br />
-          Nom : {data.nom}
-          <br />
-          Prenom : {data.prenom} <br />
-          Telephone : {data.tel} <br />
+      <br />
+      {data.length > 0 ? (
+        <div>
+          {data.map((contact) => (
+            <div key={contact.id} className="text-center">
+              ID : {contact.id} <br />
+              Nom : {contact.nom} <br />
+              Prenom : {contact.prenom} <br />
+              Telephone : {contact.tel} <br />
+              <hr />
+            </div>
+          ))}
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

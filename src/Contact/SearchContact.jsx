@@ -19,7 +19,16 @@ export default function SearchContact() {
       const filtreData = contact.filter(
         (contacts) => contacts.nom === search || contacts.prenom === search
       );
-      setData(filtreData[0]);
+      if (filtreData.length === 0) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "No matching contacts found!",
+        });
+      } else {
+        setData(filtreData[0]);
+      }
+      
     }
   }
   return (

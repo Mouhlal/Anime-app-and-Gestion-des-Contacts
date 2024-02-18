@@ -2,7 +2,7 @@ const initialState = {
     contacts:[
         {id:1,nom:"Akram",prenom:"Mouhlal",tel:"0642039816"},
         {id:2,nom:"Achraf",prenom:"Mahdi",tel:"0633442210"},
-        {id:3,nom:"Ahmed",prenom:"Zizo",tel:"0642039816"}
+        {id:3,nom:"Ilham",prenom:"El Amiri",tel:"0642039816"}
     ]
 }
 

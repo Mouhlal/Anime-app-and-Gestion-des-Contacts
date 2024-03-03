@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../Anime/Cont.css";
 import Head from "./Head";
 
 export default function MyAnime() {
@@ -24,25 +23,27 @@ export default function MyAnime() {
   }, []);
 
   return (
-    <div className="container p-3">
+    <div className="overflow-hidden p-10 bg-gray-700 ">
       <Head />
-      <div className="all">
+      <div className="sm:flex sm:flex-row sm:flex-wrap sm:items-center sm:justify-beetwen gap-10 sm:gap-16 flex-col h-[380] w-[260] ">
         {anime.map((item) => (
-          <div key={item.mal_id}>
-            {" "}
-            <div className="cont">
-              <Link
-                to={`/details/${item.mal_id}`}
-                style={{ textDecoration: "none" }}
-              >
-                <img src={item.images.webp.image_url} alt="" />
-                <div className="items">
-                  <h5 id="tit" className="p-2">
-                    {item.title}
-                  </h5>
-                </div>
-              </Link>
-            </div>
+          <div
+            key={item.mal_id}
+            className="text-center m-3 relative left-5 w-64 h-[100]"
+          >
+            <Link
+              to={`/details/${item.mal_id}`}
+              className="no-underline text-black text-center sm:text-center"
+            >
+              <img
+                src={item.images.webp.image_url}
+                alt={item.title}
+                className="rounded sm:m-1 w-64 h-96"
+              />
+              <h5 className="p-2 sm:text-center text-center text-white relative font-bold">
+                {item.title}
+              </h5>
+            </Link>
           </div>
         ))}
       </div>

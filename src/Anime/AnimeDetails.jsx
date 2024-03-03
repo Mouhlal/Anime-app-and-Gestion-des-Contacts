@@ -23,56 +23,59 @@ export default function AnimeDetails() {
   }, []);
 
   return (
-    <div className="container">
-      <Head />
-      <div className="row mt-4">
-        <div className="col-md-4">
-          <img
-            src={anime.images && anime.images.jpg && anime.images.jpg.image_url}
-            alt=""
-            className="img-fluid rounded shadow"
-            style={{ position: "relative", left: "25px" }}
-          />
-        </div>
-        <div className="col-md-8">
-          <h2>{anime.title} </h2>
-          <p className="text-muted">
-            <b>Type:</b> {anime.type}
-          </p>
-          <p className="text-muted">
-            <b>Episodes:</b> {anime.episodes}
-          </p>
-          <p className="text-muted">
-            <b>Score:</b> {anime.score}
-          </p>
-          <p className="text-muted">
-            <b>Start Date:</b> {anime.year}
-          </p>
-          <p className="text-muted">
-            <b>Airing :</b> {anime.aired && anime.aired.string}
-          </p>
-          <p className="text-muted">
-            <b>Genres:</b>
-          </p>
-          <ul className="list-unstyled">
-            {anime.genres &&
-              anime.genres.map((genre, index) => (
-                <li key={index} className="d-inline me-3">
-                  {genre.name}
-                </li>
-              ))}
-          </ul>
-          <hr />
-          <p>{anime.synopsis}</p>
+    <div className="bg-gray-700  md:overflow-hidden text-white min-h-screen">
+      <div className="p-2">
+        <Head />
+      </div>
+      <div className="">
+        <div className="text-center">
+          <div className="md:relative">
+            <img
+              src={
+                anime.images && anime.images.jpg && anime.images.jpg.image_url
+              }
+              alt={anime.title}
+              className="rounded m-1 relative left-16 md:top-10"
+            />
+          </div>
+          <div className="m-5 md:relative md:bottom-80 md:left-52">
+            <h1 className="text-black font-serif">{anime.title} </h1>
+            <p className="">
+              Type: <span className="font-bold">{anime.type}</span>
+            </p>
+            <p className="">
+              Episodes: <span className="font-bold">{anime.episodes}</span>
+            </p>
+            <p className="">
+              Score: <span className="font-bold">{anime.score}</span>
+            </p>
+            <p className="">
+              Start Date:<span className="font-bold">{anime.year}</span>
+            </p>
+            <p className="">
+              Airing :{" "}
+              <span className="font-bold">
+                {anime.aired && anime.aired.string}
+              </span>
+            </p>
+            <p className="text-white font-bold">Genres:</p>
+            <ul className="list-none flex flex-wrap gap-4 justify-center md:justify-center">
+              {anime.genres &&
+                anime.genres.map((genre, index) => (
+                  <li key={index} className="text-red-400">
+                    {genre.name}
+                  </li>
+                ))}
+            </ul>
+          </div>
           {anime.trailer && (
-            <div className="embed-responsive embed-responsive-16by9">
+            <div className="md:relative md:bottom-80">
+              <p className="md:relative md:w-96 md:left-9">{anime.synopsis}</p>
               <iframe
                 title="Trailer"
-                className="embed-responsive-item"
+                className="embed-responsive-item m-1 p-5 sm:absolute sm:bottom-24 sm:left-1/2 sm:-translate-y-full sm:w-1/2 sm:h-96"
                 src={anime.trailer && anime.trailer.embed_url}
                 allowFullScreen
-                width={470}
-                height={470}
               ></iframe>
             </div>
           )}

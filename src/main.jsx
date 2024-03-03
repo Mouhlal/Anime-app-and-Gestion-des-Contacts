@@ -10,15 +10,15 @@ import Appnnime from "./Anime/Appnnime.jsx";
 import { BrowserRouter} from 'react-router-dom'
 
 
-// const store = legacy_createStore(MyReducer);
+ const store = legacy_createStore(MyReducer);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  /*  <Provider store={store}>
+    <Provider store={store}>
     <App />
-  </Provider>  */
+  </Provider>  
 
- <BrowserRouter>
+/*  <BrowserRouter>
    <Appnnime />
- </BrowserRouter>
+ </BrowserRouter> */
 
 );
